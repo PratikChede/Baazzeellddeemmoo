@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://docs.bazel.build/versions/5.1.0/bzlmod.html -->
+<html lang="en" itemscope="" itemtype="https://schema.org/WebPage" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="anchorjs"></style>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Only show Bazel version in title if it's a release -->
+    <title>Bzlmod user guide - Bazel 5.1.0</title>
+
+    <link rel="canonical" href="https://bazel.build/docs/bzlmod">
+
+    <!-- Webfont -->
+    <link href="./Bzlmod user guide - Bazel 5.1.0_files/css" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/png" href="https://docs.bazel.build/images/favicon.ico">
+
+    <!-- Bootstrap -->
+    <link href="./Bzlmod user guide - Bazel 5.1.0_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Bzlmod user guide - Bazel 5.1.0_files/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="./Bzlmod user guide - Bazel 5.1.0_files/main.css">
+
+    <!-- metadata -->
+    <meta name="og:title" content="Bzlmod user guide">
+    <meta name="og:image" content="/images/bazel-og-image.png">
+
+    <!-- google search console verification -->
+    <meta name="google-site-verification" content="ftWLOiP2hnDW4Cw3LUGEaXU83RVIpiyxwaXFFhoakzs">
+  <style></style></head>
+
+  <body style="">
+        <nav id="common-nav" class="navbar navbar-inverse navbar-fixed-top" style="">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://www.bazel.build/">
+            <img class="navbar-logo" src="./Bzlmod user guide - Bazel 5.1.0_files/bazel-navbar.svg">
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/bazelbuild/bazel">GitHub</a></li>
+          </ul>
+          <form class="navbar-form navbar-right" action="https://docs.bazel.build/search.html" id="cse-search-box">
+            <div class="form-group">
+              <input type="hidden" name="cx" value="009927877080525621790:2pxlpaexqpc">
+              <input type="hidden" name="cof" value="FORID:10">
+              <input type="hidden" name="ie" value="UTF-8">
+              <input type="search" name="q" id="q" class="form-control input-sm" placeholder="Search">
+            </div>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="https://docs.bazel.build/versions/5.1.0/bazel-overview.html">Getting Started</a>
+            </li>
+            <li>
+              <a href="https://docs.bazel.build/versions/5.1.0/guide.html">Using Bazel</a>
+            </li>
+            <li>
+              <a href="https://docs.bazel.build/versions/5.1.0/skylark/concepts.html">Extending Bazel</a>
+            </li>
+            <li>
+              <a href="https://www.bazel.build/contributing.html">Contributing</a>
+            </li>
+            <li>
+              <a href="https://blog.bazel.build/">Blog</a>
+            </li>
+            <li><a href="https://twitter.com/bazelbuild" class="nav-icon"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/bazel" class="nav-icon"><i class="fa fa-stack-overflow"></i></a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container vpad">
+      <div class="row">
+        <div class="col-md-2">
+          <a class="btn btn-default btn-lg btn-block sidebar-toggle" data-toggle="collapse" href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#sidebar-nav" aria-expanded="false" aria-controls="sidebar-nav">
+            <i class="glyphicon glyphicon-menu-hamburger"></i> Navigation
+          </a>
+
+          <nav class="sidebar collapse" id="sidebar-nav">
+            <select onchange="location.href=this.value">
+                <option value="" selected="" disabled="" hidden="">Version: 5.1.0</option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/main/bzlmod.html">
+                    main
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/5.4.1/bzlmod.html">
+                    5.4.1
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/5.4.0/bzlmod.html">
+                    5.4.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/5.3.1/bzlmod.html">
+                    5.3.1
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/5.3.0/bzlmod.html">
+                    5.3.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/5.2.0/bzlmod.html">
+                    5.2.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/5.1.1/bzlmod.html">
+                    5.1.1
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/5.1.0/bzlmod.html">
+                    5.1.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/5.0.0/bzlmod.html">
+                    5.0.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/4.2.4/bzlmod.html">
+                    4.2.4
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/4.2.3/bzlmod.html">
+                    4.2.3
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/4.2.2/bzlmod.html">
+                    4.2.2
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/4.2.1/bzlmod.html">
+                    4.2.1
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/4.2.0/bzlmod.html">
+                    4.2.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/4.1.0/bzlmod.html">
+                    4.1.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/4.0.0/bzlmod.html">
+                    4.0.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/3.7.0/bzlmod.html">
+                    3.7.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/3.6.0/bzlmod.html">
+                    3.6.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/3.5.1/bzlmod.html">
+                    3.5.1
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/3.4.0/bzlmod.html">
+                    3.4.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/3.3.0/bzlmod.html">
+                    3.3.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/3.2.0/bzlmod.html">
+                    3.2.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/3.1.0/bzlmod.html">
+                    3.1.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/3.0.0/bzlmod.html">
+                    3.0.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/2.2.0/bzlmod.html">
+                    2.2.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/2.1.0/bzlmod.html">
+                    2.1.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/2.0.0/bzlmod.html">
+                    2.0.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/1.2.0/bzlmod.html">
+                    1.2.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/1.1.0/bzlmod.html">
+                    1.1.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/1.0.0/bzlmod.html">
+                    1.0.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.29.1/bzlmod.html">
+                    0.29.1
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.29.0/bzlmod.html">
+                    0.29.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.28.0/bzlmod.html">
+                    0.28.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.27.0/bzlmod.html">
+                    0.27.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.26.0/bzlmod.html">
+                    0.26.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.25.0/bzlmod.html">
+                    0.25.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.24.0/bzlmod.html">
+                    0.24.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.23.0/bzlmod.html">
+                    0.23.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.22.0/bzlmod.html">
+                    0.22.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.21.0/bzlmod.html">
+                    0.21.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.20.0/bzlmod.html">
+                    0.20.0
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.19.2/bzlmod.html">
+                    0.19.2
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.19.1/bzlmod.html">
+                    0.19.1
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.18.1/bzlmod.html">
+                    0.18.1
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.17.2/bzlmod.html">
+                    0.17.2
+                </option>
+                
+                <!-- reconstruct absolute url for the current page for each doc version -->
+                <option value="/versions/0.17.1/bzlmod.html">
+                    0.17.1
+                </option>
+                
+            </select>
+
+            <!-- If the current version has a explicitly versioned sidebar for the major version -->
+            
+                
+            
+            <h3 id="home">Home<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#home" aria-label="Anchor link for: home" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+<ul class="sidebar-nav">
+  <li><a href="https://docs.bazel.build/versions/5.1.0/bazel-overview.html">Overview</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/bazel-vision.html">Vision</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/getting-started.html">Getting Started</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/glossary.html">Glossary</a></li>
+</ul>
+
+<h3 id="installing-bazel">Installing Bazel<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#installing-bazel" aria-label="Anchor link for: installing bazel" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+<ul class="sidebar-nav">
+  <li><a href="https://docs.bazel.build/versions/5.1.0/install.html">Overview</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/install-redhat.html">Fedora/CentOS</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/install-os-x.html">macOS</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/install-suse.html">openSUSE</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/install-ubuntu.html">Ubuntu</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/install-windows.html">Windows</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/install-compile-source.html">Compiling from Source</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/install-bazelisk.html">Installing with Bazelisk</a></li>
+</ul>
+
+<h3 id="setting-up-your-environment">Setting up your environment<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#setting-up-your-environment" aria-label="Anchor link for: setting up your environment" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+<ul class="sidebar-nav">
+  <li><a href="https://docs.bazel.build/versions/5.1.0/completion.html">Command-Line Completion</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/ide.html">Integrating with IDEs</a></li>
+</ul>
+
+<h3 id="tutorials">Tutorials<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#tutorials" aria-label="Anchor link for: tutorials" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+<ul class="sidebar-nav">
+    <li><a href="https://docs.bazel.build/versions/5.1.0/tutorial/cpp.html">C++</a></li>
+    <li><a href="https://docs.bazel.build/versions/5.1.0/tutorial/java.html">Java</a></li>
+    <li><a href="https://docs.bazel.build/versions/5.1.0/tutorial/android-app.html">Android</a></li>
+    <li><a href="https://docs.bazel.build/versions/5.1.0/tutorial/ios-app.html">iOS</a></li>
+</ul>
+
+<h3 id="understanding">Understanding<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#understanding" aria-label="Anchor link for: understanding" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+<ul class="sidebar-nav">
+  <li><a href="https://docs.bazel.build/versions/5.1.0/build-ref.html">Core Concepts</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/external.html">External Dependencies</a></li>
+  <li class="active"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html">Bzlmod User Guide</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/configurable-attributes.html">Configurable Attributes</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/platforms-intro.html">Platforms and Toolchains</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/visibility.html">Visibility</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/hermeticity.html">Hermeticity</a></li>
+</ul>
+
+<h3 id="releases">Releases<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#releases" aria-label="Anchor link for: releases" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+<ul class="sidebar-nav">
+  <li><a href="https://docs.bazel.build/versions/5.1.0/versioning.html">Release Versioning</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/releases.html">Release Policy</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/backward-compatibility.html">Backward Compatibility</a></li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/updating-bazel.html">Updating Bazel</a></li>
+  <li>
+    <a class="sidebar-nav-heading" data-toggle="collapse" href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#release-notes-menu" aria-expanded="false" aria-controls="release-notes-menu">
+      Release Notes<span class="caret"></span>
+    </a>
+    <ul class="collapse sidebar-nav sidebar-submenu" id="release-notes-menu">
+
+       <li><a href="https://blog.bazel.build/2020/11/10/bazel-4.0-announce.html">Bazel 4.0</a></li>
+       <li><a href="https://blog.bazel.build/2020/10/20/bazel-3-7.html">Bazel 3.7</a></li>
+       <li><a href="https://blog.bazel.build/2020/10/06/bazel-3-6.html">Bazel 3.6</a></li>
+       <li><a href="https://blog.bazel.build/2020/08/26/bazel-3.5.html">Bazel 3.5</a></li>
+       <li><a href="https://blog.bazel.build/2020/07/13/bazel-3-4.html">Bazel 3.4</a></li>
+       <li><a href="https://blog.bazel.build/2020/06/17/bazel-3-3.html">Bazel 3.3</a></li>
+       <li><a href="https://blog.bazel.build/2020/05/27/bazel-3-2.html">Bazel 3.2</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+          </nav>
+        </div>
+
+        <div class="col-md-8">
+          <div class="content">
+            <h1 id="bzlmod-user-guide">Bzlmod User Guide<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#bzlmod-user-guide" aria-label="Anchor link for: bzlmod user guide" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h1>
+
+<p><em>Bzlmod</em> is the codename of the new <a href="https://docs.bazel.build/versions/5.1.0/external.html">external dependency</a> system
+introduced in Bazel 5.0. It was introduced to address several pain points of the
+old system that couldn’t feasibly be fixed incrementally; see the
+<a href="https://docs.google.com/document/d/1moQfNcEIttsk6vYanNKIy3ZuK53hQUFq1b1r0rmsYVg/edit#heading=h.xxnnwabymk1v">Problem Statement section of the original design doc</a>
+for more details.</p>
+
+<p>In Bazel 5.0, Bzlmod is not turned on by default; the flag
+<code class="highlighter-rouge">--experimental_enable_bzlmod</code> needs to be specified for the following to take
+effect. As the flag name suggests, this feature is currently <em>experimental</em>;
+APIs and behaviors may change until the feature officially launches.</p>
+
+<h2 id="bazel-modules">Bazel Modules<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#bazel-modules" aria-label="Anchor link for: bazel modules" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+
+<p>The old WORKSPACE-based external dependency system is centered around
+<em>repositories</em> (or <em>repos</em>), created via <em>repository rules</em> (or <em>repo rules</em>).
+While repos are still an important concept in the new system, <em>modules</em> are the
+core units of dependency.</p>
+
+<p>A <em>module</em> is essentially a Bazel project that can have multiple versions, each
+of which publishes metadata about other modules that it depends on. This is
+analogous to familiar concepts in other dependency management systems: a Maven
+<em>artifact</em>, an npm <em>package</em>, a Cargo <em>crate</em>, a Go <em>module</em>, etc.</p>
+
+<p>A module simply specifies its dependencies using “name” and “version” pairs, as
+opposed to specific URLs in WORKSPACE. The dependencies are then looked up in a
+<a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#registries">Bazel registry</a>; by default, the
+<a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#bazel-central-registry">Bazel Central Registry</a>. In your workspace, each
+module then gets turned into a repo.</p>
+
+<h3 id="modulebazel">MODULE.bazel<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#modulebazel" aria-label="Anchor link for: modulebazel" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>Every version of every module has a MODULE.bazel file declaring its dependencies
+and other metadata. Here’s a basic example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">module</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"my-module"</span><span class="p">,</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s">"1.0"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"rules_cc"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s">"0.0.1"</span><span class="p">)</span>
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"protobuf"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s">"3.19.0"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The MODULE.bazel file should be located at the root of the workspace directory
+(next to the WORKSPACE file). Unlike with the WORKSPACE file, you don’t need to
+specify your <em>transitive</em> dependencies; instead, you should only specify
+<em>direct</em> dependencies, and the MODULE.bazel files of your dependencies will be
+processed to discover transitive dependencies automatically.</p>
+
+<p>The MODULE.bazel file is similar to BUILD files in that it doesn’t support any
+form of control flow; it additionally forbids <code class="highlighter-rouge">load</code> statements. The directives
+it supports are:</p>
+
+<ul>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#module"><code class="highlighter-rouge">module</code></a>, to specify metadata about the
+current module, including its name, version, and so on;</li>
+  <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#bazel_dep"><code class="highlighter-rouge">bazel_dep</code></a>, to specify direct
+dependencies on other Bazel modules;</li>
+  <li>Overrides, which can only be used by the root module (that is, not by a
+module which is being used as a dependency) to customize the behavior of a
+certain direct or transitive dependency:
+    <ul>
+      <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#single_version_override"><code class="highlighter-rouge">single_version_override</code></a></li>
+      <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#multiple_version_override"><code class="highlighter-rouge">multiple_version_override</code></a></li>
+      <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#archive_override"><code class="highlighter-rouge">archive_override</code></a></li>
+      <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#git_override"><code class="highlighter-rouge">git_override</code></a></li>
+      <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#local_path_override"><code class="highlighter-rouge">local_path_override</code></a></li>
+    </ul>
+  </li>
+  <li>Directives related to <a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#module-extensions">module extensions</a>:
+    <ul>
+      <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#use_extension"><code class="highlighter-rouge">use_extension</code></a></li>
+      <li><a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#use_repo"><code class="highlighter-rouge">use_repo</code></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="version-format">Version format<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#version-format" aria-label="Anchor link for: version format" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>Bazel has a diverse ecosystem and projects are using all kinds of versioning
+schemes. The most popular by far is <a href="https://semver.org/">SemVer</a>, but there are
+also prominent projects using different schemes such as
+<a href="https://github.com/abseil/abseil-cpp/releases">Abseil</a>, whose versions are
+date-based, for example <code class="highlighter-rouge">20210324.2</code>).</p>
+
+<p>For this reason, Bzlmod adopts a more relaxed version of the SemVer spec, in
+particular allowing any number of sequences of digits in the “release” part of
+the version (instead of exactly 3 as SemVer prescribes: <code class="highlighter-rouge">MAJOR.MINOR.PATCH</code>).
+Additionally, the semantics of major, minor, and patch version increases are not
+enforced. (However, see <a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#compatibility-level">compatibility level</a> for details
+on how we denote backwards compatibility.) Other parts of the SemVer spec, such
+as a hyphen denoting a prerelease version, are not modified.</p>
+
+<p>Note that this version format is subject to change before the official launch of
+Bzlmod.</p>
+
+<h3 id="version-resolution">Version resolution<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#version-resolution" aria-label="Anchor link for: version resolution" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>The diamond dependency problem is a staple in the versioned dependency
+management space. Suppose you have the following dependency graph:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       A 1.0
+      /     \
+   B 1.0    C 1.1
+     |        |
+   D 1.0    D 1.1
+</code></pre></div></div>
+
+<p>Which version of D should be used? To resolve this question, Bzlmod uses the
+<a href="https://research.swtch.com/vgo-mvs">Minimal Version Selection</a> (MVS) algorithm
+introduced in the Go module system. MVS assumes that all new versions of a
+module are backwards compatible, and thus simply picks the highest version
+specified by any dependent (so D 1.1 in our example). It’s called “minimal”
+because D 1.1 here is the <em>minimal</em> version that could satisfy our requirements;
+even if D 1.2 or newer exists, we don’t select them. This has the added benefit
+that the version selection is <em>high-fidelity</em> and <em>reproducible</em>.</p>
+
+<p>Version resolution is performed wholly locally on your machine, not by the
+registry.</p>
+
+<h3 id="compatibility-level">Compatibility level<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#compatibility-level" aria-label="Anchor link for: compatibility level" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>Note that MVS’s assumption about backwards compatibility is feasible because it
+simply treats backwards incompatible versions of a module as a separate module.
+In terms of SemVer, that means A 1.x and A 2.x are considered distinct modules,
+and can coexist in the resolved dependency graph. This is, in turn, made
+possible by the fact that the major version is encoded in the package path in
+Go, so there aren’t any compile-time or linking-time conflicts.</p>
+
+<p>In Bazel, we don’t have such guarantees. Thus we need a way to denote the “major
+version” number in order to detect backwards incompatible versions. This number
+is called the <em>compatibility level</em>, and is specified by each module version in
+its <code class="highlighter-rouge">module()</code> directive. With this information in hand, we can throw an error
+when we detect that versions of the same module with different compatibility
+levels exist in the resolved dependency graph.</p>
+
+<h3 id="repository-names">Repository names<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#repository-names" aria-label="Anchor link for: repository names" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>In Bazel, every external dependency has a repository name. Sometimes, the same
+dependency might be used via different repository names (eg. Both
+<code class="highlighter-rouge">@io_bazel_skylib</code> and <code class="highlighter-rouge">@bazel_skylib</code> mean
+<a href="https://github.com/bazelbuild/bazel-skylib">Bazel skylib</a>), or the same
+repository name might be used for different dependencies in different projects.</p>
+
+<p>In Bzlmod, repositories can be generated by Bazel modules and
+<a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#module-extensions">module extensions</a>. To resolve repository name conflicts,
+we are embracing the <a href="https://docs.bazel.build/versions/5.1.0/external.html#shadowing-dependencies">repository mapping</a>
+mechanism in the new system. Here are two important concepts:</p>
+
+<ul>
+  <li>
+    <p><strong>Canonical repository name</strong>: The globally unique repository name for each
+repository. This will be the directory name the repository lives in.
+<br>It’s constructed as follows (<strong>Warning</strong>: the canonical name format is
+not an API you should depend on, it’s subject to change at any time):</p>
+
+    <ul>
+      <li>For Bazel module repos: <code class="highlighter-rouge">&lt;module name&gt;.&lt;version&gt;</code>
+<br> (eg. <code class="highlighter-rouge">@bazel_skylib.1.0.3</code>)</li>
+      <li>For module extension repos: <code class="highlighter-rouge">&lt;module name&gt;.&lt;version&gt;.&lt;extension name&gt;.&lt;repo name&gt;</code>
+<br>(eg. <code class="highlighter-rouge">@rules_cc.0.0.1.cc_configure.local_config_cc</code>)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Local repository name</strong>: The repository name to be used in the BUILD and
+bzl files within a repo. The same dependency could have different local
+names for different repos.
+<br>It’s determined as follows:</p>
+
+    <ul>
+      <li>For Bazel module repos: <code class="highlighter-rouge">&lt;module name&gt;</code> by default, or the name
+specified by the <code class="highlighter-rouge">repo_name</code> attribute in
+<a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#bazel_dep"><code class="highlighter-rouge">bazel_dep</code></a>.</li>
+      <li>For module extension repos: repository name introduced via
+<a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#use_repo"><code class="highlighter-rouge">use_repo</code></a>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Every repository has a repository mapping dictionary of its direct dependencies,
+which is a map from the local repository name to the canonical repository name.
+We use the repository mapping to resolve the repository name when constructing a
+label. Note that, there is no conflict of canonical repository names, and the
+usages of local repository names can be discovered by parsing the MODULE.bazel
+file, therefore conflicts can be easily caught and resolved without affecting
+other dependencies.</p>
+
+<h3 id="strict-deps">Strict deps<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#strict-deps" aria-label="Anchor link for: strict deps" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>The new dependency specification format allows us to perform stricter checks. In
+particular, we now enforce that a module can only use repos created from its
+direct dependencies. This helps prevent accidental and hard-to-debug breakages
+when something in the transitive dependency graph changes.</p>
+
+<p>Strict deps is implemented based on
+<a href="https://docs.bazel.build/versions/5.1.0/external.html#shadowing-dependencies">repository mapping</a>. Basically, the
+repository mapping for each repo contains all of its <em>direct dependencies</em>, any
+other repository is not visible. Visible dependencies for each repository are
+determined as follows:</p>
+
+<ul>
+  <li>A Bazel module repo can see all repos introduced in the MODULE.bazel file
+via <a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#bazel_dep"><code class="highlighter-rouge">bazel_dep</code></a> and
+<a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#use_repo"><code class="highlighter-rouge">use_repo</code></a>.</li>
+  <li>A module extension repo can see all visible dependencies of the module that
+provides the extension, plus all other repos generated by the same module
+extension.</li>
+</ul>
+
+<h2 id="registries">Registries<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#registries" aria-label="Anchor link for: registries" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+
+<p>Bzlmod discovers dependencies by requesting their information from Bazel
+<em>registries</em>. A Bazel registry is simply a database of Bazel modules. The only
+supported form of registries is an <a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#index-registry"><em>index registry</em></a>, which is
+a local directory or a static HTTP server following a specific format. In the
+future, we plan to add support for <em>single-module registries</em>, which are simply
+git repos containing the source and history of a project.</p>
+
+<h3 id="index-registry">Index registry<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#index-registry" aria-label="Anchor link for: index registry" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>An index registry is a local directory or a static HTTP server containing
+information about a list of modules, including their homepage, maintainers, the
+MODULE.bazel file of each version, and how to fetch the source of each version.
+Notably, it does <em>not</em> need to serve the source archives itself.</p>
+
+<p>An index registry must follow the format below:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">/bazel_registry.json</code>: A JSON file containing metadata for the registry.
+Currently, it only has one key, <code class="highlighter-rouge">mirrors</code>, specifying the list of mirrors to
+use for source archives.</li>
+  <li><code class="highlighter-rouge">/modules</code>: A directory containing a subdirectory for each module in this
+registry.</li>
+  <li><code class="highlighter-rouge">/modules/$MODULE</code>: A directory containing a subdirectory for each version
+of this module, as well as the following file:
+    <ul>
+      <li><code class="highlighter-rouge">metadata.json</code>: A JSON file containing information about the module,
+with the following fields:
+        <ul>
+          <li><code class="highlighter-rouge">homepage</code>: The URL of the project’s homepage.</li>
+          <li><code class="highlighter-rouge">maintainers</code>: A list of JSON objects, each of which corresponds to
+the information of a maintainer of the module <em>in the registry</em>.
+Note that this is not necessarily the same as the <em>authors</em> of the
+project.</li>
+          <li><code class="highlighter-rouge">versions</code>: A list of all the versions of this module to be found in
+this registry.</li>
+          <li><code class="highlighter-rouge">yanked_versions</code>: A list of <em>yanked</em> versions of this module. This
+is currently a no-op, but in the future, yanked versions will be
+skipped or yield an error.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">/modules/$MODULE/$VERSION</code>: A directory containing the following files:
+    <ul>
+      <li><code class="highlighter-rouge">MODULE.bazel</code>: The MODULE.bazel file of this module version.</li>
+      <li><code class="highlighter-rouge">source.json</code>: A JSON file containing information on how to fetch the
+source of this module version, with the following fields:
+        <ul>
+          <li><code class="highlighter-rouge">url</code>: The URL of the source archive.</li>
+          <li><code class="highlighter-rouge">integrity</code>: The
+<a href="https://w3c.github.io/webappsec-subresource-integrity/#integrity-metadata-description">Subresource Integrity</a>
+checksum of the archive.</li>
+          <li><code class="highlighter-rouge">strip_prefix</code>: A directory prefix to strip when extracting the
+source archive.</li>
+          <li><code class="highlighter-rouge">patches</code>: A list of strings, each of which names a patch file to
+apply to the extracted archive. The patch files are located under
+the <code class="highlighter-rouge">/modules/$MODULE/$VERSION/patches</code> directory.</li>
+          <li><code class="highlighter-rouge">patch_strip</code>: Same as the <code class="highlighter-rouge">--strip</code> argument of Unix patch.</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">patches/</code>: An optional directory containing patch files.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="bazel-central-registry">Bazel Central Registry<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#bazel-central-registry" aria-label="Anchor link for: bazel central registry" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>By default, all dependencies are requested from the <em>Bazel Central Registry</em>
+(BCR), which is an index registry located at
+<a href="https://registry.bazel.build/">registry.bazel.build</a>. Its contents are backed by
+the GitHub repo
+<a href="https://github.com/bazelbuild/bazel-central-registry">bazelbuild/bazel-central-registry</a>.</p>
+
+<p>The BCR is maintained by the Bazel community; contributors are welcome to submit
+PRs. See
+<a href="https://docs.google.com/document/d/1ReuBBp4EHnsuvcpfXM6ITDmP2lrOu8DGlePMUKvDnXM/edit?usp=sharing">Bazel Central Registry Policies and Procedures</a>.</p>
+
+<p>In addition to following the format of a normal index registry, the BCR requires
+a <code class="highlighter-rouge">presubmit.yml</code> file for each module version
+(<code class="highlighter-rouge">/modules/$MODULE/$VERSION/presubmit.yml</code>). This file specifies a few essential
+build and test targets that can be used to sanity-check the validity of this
+module version, and is used by the BCR’s CI pipelines to ensure interoperability
+between modules in the BCR.</p>
+
+<h3 id="selecting-registries">Selecting registries<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#selecting-registries" aria-label="Anchor link for: selecting registries" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>The repeatable Bazel flag <code class="highlighter-rouge">--registry</code> can be used to specify the list of
+registries to request modules from, so you could set up your project to fetch
+dependencies from a third-party or internal registry. Earlier registries take
+precedence. For convenience, you can put a list of <code class="highlighter-rouge">--registry</code> flags in the
+.bazelrc file of your project.</p>
+
+<h2 id="module-extensions">Module Extensions<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#module-extensions" aria-label="Anchor link for: module extensions" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+
+<p>Module extensions allow you to extend the module system by reading input data
+from modules across the dependency graph, performing necessary logic to resolve
+dependencies, and finally creating repos by calling repo rules. They are similar
+in function to today’s WORKSPACE macros, but are more suited in the world of
+modules and transitive dependencies.</p>
+
+<p>Module extensions are defined in .bzl files, just like repo rules or WORKSPACE
+macros. They’re not invoked directly; rather, each module can specify pieces of
+data called <em>tags</em> for extensions to read. Then, after module version resolution
+is done, module extensions are run. Each extension is run once after module
+resolution (still before any build actually happens), and gets to read all the
+tags belonging to it across the entire dependency graph.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          [ A 1.1                ]
+          [   * maven.dep(X 2.1) ]
+          [   * maven.pom(...)   ]
+              /              \
+   bazel_dep /                \ bazel_dep
+            /                  \
+[ B 1.2                ]     [ C 1.0                ]
+[   * maven.dep(X 1.2) ]     [   * maven.dep(X 2.1) ]
+[   * maven.dep(Y 1.3) ]     [   * cargo.dep(P 1.1) ]
+            \                  /
+   bazel_dep \                / bazel_dep
+              \              /
+          [ D 1.4                ]
+          [   * maven.dep(Z 1.4) ]
+          [   * cargo.dep(Q 1.1) ]
+</code></pre></div></div>
+
+<p>In the example dependency graph above, A 1.1 and B 1.2 etc are Bazel modules;
+you can think of each one as a MODULE.bazel file. Each module can specify some
+tags for module extensions; here some are specified for the extension “maven”,
+and some are specified for “cargo”. When this dependency graph is finalized (for
+example, maybe B 1.2 actually has a <code class="highlighter-rouge">bazel_dep</code> on D 1.3 but got upgraded to D
+1.4 due to C), the extensions “maven” is run, and it gets to read all the
+<code class="highlighter-rouge">maven.*</code> tags, using information therein to decide which repos to create.
+Similarly for the “cargo” extension.</p>
+
+<h3 id="extension-usage">Extension usage<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#extension-usage" aria-label="Anchor link for: extension usage" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>Extensions are hosted in Bazel modules themselves, so to use an extension in
+your module, you need to first add a <code class="highlighter-rouge">bazel_dep</code> on that module, and then call
+the <a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#use_extension"><code class="highlighter-rouge">use_extension</code></a> builtin function
+to bring it into scope. Consider the following example, a snippet from a
+MODULE.bazel file to use a hypothetical “maven” extension defined in the
+<code class="highlighter-rouge">rules_jvm_external</code> module:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"rules_jvm_external"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s">"1.0"</span><span class="p">)</span>
+<span class="n">maven</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s">"@rules_jvm_external//:extensions.bzl"</span><span class="p">,</span> <span class="s">"maven"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>After bringing the extension into scope, you can then use the dot-syntax to
+specify tags for it. Note that the tags need to follow the schema defined by the
+corresponding <em>tag classes</em> (see <a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#extension-definition">extension definition</a>
+below). Here’s an example specifying some <code class="highlighter-rouge">maven.dep</code> and <code class="highlighter-rouge">maven.pom</code> tags.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">maven</span><span class="p">.</span><span class="n">dep</span><span class="p">(</span><span class="n">coord</span><span class="o">=</span><span class="s">"org.junit:junit:3.0"</span><span class="p">)</span>
+<span class="n">maven</span><span class="p">.</span><span class="n">dep</span><span class="p">(</span><span class="n">coord</span><span class="o">=</span><span class="s">"com.google.guava:guava:1.2"</span><span class="p">)</span>
+<span class="n">maven</span><span class="p">.</span><span class="n">pom</span><span class="p">(</span><span class="n">pom_xml</span><span class="o">=</span><span class="s">"//:pom.xml"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If the extension generates repos that you want to use in your module, you need
+to use the <a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#use_repo"><code class="highlighter-rouge">use_repo</code></a> directive to declare
+them. This is to satisfy the strict deps condition and avoid local repo name
+conflict.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use_repo</span><span class="p">(</span>
+    <span class="n">maven</span><span class="p">,</span>
+    <span class="s">"org_junit_junit"</span><span class="p">,</span>
+    <span class="n">guava</span><span class="o">=</span><span class="s">"com_google_guava_guava"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>The repos generated by an extension is part of its API, so from the tags you
+specified, you should know that the “maven” extension is going to generate a
+repo called “org_junit_junit”, and one called “com_google_guava_guava”. With
+<code class="highlighter-rouge">use_repo</code>, you can optionally rename them in the scope of your module, like to
+“guava” here.</p>
+
+<h3 id="extension-definition">Extension definition<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#extension-definition" aria-label="Anchor link for: extension definition" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h3>
+
+<p>Module extensions are defined similarly to repo rules, using the
+<a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#module_extension"><code class="highlighter-rouge">module_extension</code></a> function. Both
+have an implementation function; but while repo rules have a number of
+attributes, module extensions have a number of
+<a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/globals.html#tag_class"><code class="highlighter-rouge">tag_class</code>es</a>, each of which has a number
+of attributes. The tag classes define schemas for tags used by this extension.
+Continuing our example of the hypothetical “maven” extension above:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># @rules_jvm_external//:extensions.bzl
+</span><span class="n">maven_dep</span> <span class="o">=</span> <span class="n">tag_class</span><span class="p">(</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">"coord"</span><span class="p">:</span> <span class="n">attr</span><span class="p">.</span><span class="n">string</span><span class="p">()})</span>
+<span class="n">maven_pom</span> <span class="o">=</span> <span class="n">tag_class</span><span class="p">(</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s">"pom_xml"</span><span class="p">:</span> <span class="n">attr</span><span class="p">.</span><span class="n">label</span><span class="p">()})</span>
+<span class="n">maven</span> <span class="o">=</span> <span class="n">module_extension</span><span class="p">(</span>
+    <span class="n">implementation</span><span class="o">=</span><span class="n">_maven_impl</span><span class="p">,</span>
+    <span class="n">tag_classes</span><span class="o">=</span><span class="p">{</span><span class="s">"dep"</span><span class="p">:</span> <span class="n">maven_dep</span><span class="p">,</span> <span class="s">"pom"</span><span class="p">:</span> <span class="n">maven_pom</span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>These declarations make it clear that <code class="highlighter-rouge">maven.dep</code> and <code class="highlighter-rouge">maven.pom</code> tags can be
+specified, using the attribute schema defined above.</p>
+
+<p>The implementation function is similar to a WORKSPACE macro, except that it gets
+a <a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/module_ctx.html"><code class="highlighter-rouge">module_ctx</code></a> object, which grants access to the
+dependency graph and all pertinent tags. The implementation function should then
+call repo rules to generate repos:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># @rules_jvm_external//:extensions.bzl
+</span><span class="n">load</span><span class="p">(</span><span class="s">"//:repo_rules.bzl"</span><span class="p">,</span> <span class="s">"maven_single_jar"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_maven_impl</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+  <span class="n">coords</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">ctx</span><span class="p">.</span><span class="n">modules</span><span class="p">:</span>
+    <span class="n">coords</span> <span class="o">+=</span> <span class="p">[</span><span class="n">dep</span><span class="p">.</span><span class="n">coord</span> <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">mod</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">dep</span><span class="p">]</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">.</span><span class="n">execute</span><span class="p">([</span><span class="s">"coursier"</span><span class="p">,</span> <span class="s">"resolve"</span><span class="p">,</span> <span class="n">coords</span><span class="p">])</span>  <span class="c1"># hypothetical call
+</span>  <span class="n">repo_attrs</span> <span class="o">=</span> <span class="n">process_coursier</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+  <span class="p">[</span><span class="n">maven_single_jar</span><span class="p">(</span><span class="o">**</span><span class="n">attrs</span><span class="p">)</span> <span class="k">for</span> <span class="n">attrs</span> <span class="ow">in</span> <span class="n">repo_attrs</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>In the example above, we go through all the modules in the dependency graph
+(<code class="highlighter-rouge">ctx.modules</code>), each of which is a
+<a href="https://docs.bazel.build/versions/5.1.0/skylark/lib/bazel_module.html"><code class="highlighter-rouge">bazel_module</code></a> object whose <code class="highlighter-rouge">tags</code> field
+exposes all the <code class="highlighter-rouge">maven.*</code> tags on the module. Then we invoke the CLI utility
+Coursier to contact Maven and perform resolution. Finally, we use the resolution
+result to create a number of repos, using the hypothetical <code class="highlighter-rouge">maven_single_jar</code>
+repo rule.</p>
+
+<h2 id="external-links">External links<a class="anchorjs-link " href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#external-links" aria-label="Anchor link for: external links" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+
+<ul>
+  <li><a href="https://docs.google.com/document/d/1moQfNcEIttsk6vYanNKIy3ZuK53hQUFq1b1r0rmsYVg/edit">Bazel External Dependencies Overhaul</a>
+(original Bzlmod design doc)</li>
+  <li><a href="https://docs.google.com/document/d/1ReuBBp4EHnsuvcpfXM6ITDmP2lrOu8DGlePMUKvDnXM/edit?usp=sharing">Bazel Central Registry Policies and Procedures</a></li>
+  <li><a href="https://github.com/bazelbuild/bazel-central-registry">Bazel Central Registry GitHub repo</a></li>
+  <li><a href="https://www.youtube.com/watch?v=TxOCKtU39Fs">BazelCon 2021 talk on Bzlmod</a></li>
+</ul>
+
+          </div>
+        </div>
+
+        <div class="col-md-2 sticky-sidebar" style="">
+            <div class="right-sidebar">
+                <ul class="gh-links">
+                    <li><a href="https://github.com/bazelbuild/bazel/issues/new?title=Documentation%20issue:%20Bzlmod%20user%20guide&amp;body=Documentation%20URL:%20https://docs.bazel.build/versions/5.1.0/bzlmod.html&amp;labels=type:%20documentation"><i class="fa fa-github"></i> Create issue</a></li>
+                </ul>
+
+                <ul class="page-toc">
+<li class="toc-entry toc-h2"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#bazel-modules">Bazel Modules</a>
+<ul class="page-toc-sublist">
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#modulebazel">MODULE.bazel</a></li>
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#version-format">Version format</a></li>
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#version-resolution">Version resolution</a></li>
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#compatibility-level">Compatibility level</a></li>
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#repository-names">Repository names</a></li>
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#strict-deps">Strict deps</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#registries">Registries</a>
+<ul class="page-toc-sublist">
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#index-registry">Index registry</a></li>
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#bazel-central-registry">Bazel Central Registry</a></li>
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#selecting-registries">Selecting registries</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#module-extensions">Module Extensions</a>
+<ul class="page-toc-sublist">
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#extension-usage">Extension usage</a></li>
+<li class="toc-entry toc-h3"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#extension-definition">Extension definition</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="https://docs.bazel.build/versions/5.1.0/bzlmod.html#external-links">External links</a></li>
+</ul>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Satisfaction Survey -->
+    <script async="" src="./Bzlmod user guide - Bazel 5.1.0_files/analytics.js.download"></script><script async="" defer="" src="./Bzlmod user guide - Bazel 5.1.0_files/async_survey"></script>
+
+        <footer class="footer">
+      <div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-md-2">
+      <p>About</p>
+      <ul class="list-unstyled">
+        <li><a href="https://www.bazel.build/users.html">Who's Using Bazel?</a></li>
+        <li><a href="https://www.bazel.build/roadmap.html">Roadmap</a></li>
+        <li><a href="https://www.bazel.build/contributing.html">Contribute</a></li>
+        <li><a href="https://www.bazel.build/governance.html">Governance Plan</a></li>
+        <li><a href="https://policies.google.com/privacy">Privacy Policy</a></li>
+        <li><a href="https://docs.bazel.build/guide.html/sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-4 col-md-2">
+      <p>Support</p>
+      <ul class="list-unstyled">
+        <li><a href="http://stackoverflow.com/questions/tagged/bazel">Stack Overflow</a></li>
+        <li><a href="https://github.com/bazelbuild/bazel/issues">Issue Tracker</a></li>
+        <li><a href="https://docs.bazel.build/guide.html">Documentation</a></li>
+        <li><a href="https://www.bazel.build/faq.html">FAQ</a></li>
+        <li><a href="https://www.bazel.build/support.html">Support Policy</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-4 col-md-2">
+      <p>Stay Connected</p>
+      <ul class="list-unstyled">
+        <li><a href="https://twitter.com/bazelbuild">Twitter</a></li>
+        <li><a href="https://blog.bazel.build/">Blog</a></li>
+        <li><a href="https://github.com/bazelbuild/bazel">GitHub</a></li>
+        <li><a href="https://groups.google.com/forum/#!forum/bazel-discuss">Discussion group</a></li>
+        <li><a href="https://slack.bazel.build/">Slack</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <p class="text-muted">© 2023 Google</p>
+    </div>
+  </div>
+</div>
+
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./Bzlmod user guide - Bazel 5.1.0_files/jquery.min.js.download"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./Bzlmod user guide - Bazel 5.1.0_files/bootstrap.min.js.download"></script>
+
+    <!-- Anchor JS -->
+    <script type="text/javascript" src="./Bzlmod user guide - Bazel 5.1.0_files/anchor.min.js.download"></script>
+    <script>
+      // Automatically add anchors and links to all header elements that don't already have them.
+      anchors.add();
+    </script>
+
+    <script>
+      var shiftWindow = function() {
+        if (location.hash.length !== 0) {
+          window.scrollBy(0, -50);
+        }
+      };
+      window.addEventListener("hashchange", shiftWindow);
+
+      var highlightCurrentSidebarNav = function() {
+        var href = location.pathname;
+        var item = $('#sidebar-nav [href$="' + href + '"]');
+        if (item) {
+          var li = item.parent();
+          li.addClass("active");
+
+          if (li.parent() && li.parent().is("ul")) {
+            do {
+              var ul = li.parent();
+              if (ul.hasClass("collapse")) {
+                ul.collapse("show");
+              }
+              li = ul.parent();
+            } while (li && li.is("li"));
+          }
+        }
+      };
+
+      $(document).ready(function() {
+        // Scroll to anchor of location hash, adjusted for fixed navbar.
+        window.setTimeout(function() {
+          shiftWindow();
+        }, 1);
+
+        // Flip the caret when submenu toggles are clicked.
+        $(".sidebar-submenu").on("show.bs.collapse", function() {
+          var toggle = $('[href$="#' + $(this).attr('id') + '"]');
+          if (toggle) {
+            toggle.addClass("dropup");
+          }
+        });
+        $(".sidebar-submenu").on("hide.bs.collapse", function() {
+          var toggle = $('[href$="#' + $(this).attr('id') + '"]');
+          if (toggle) {
+            toggle.removeClass("dropup");
+          }
+        });
+
+        // Highlight the current page on the sidebar nav.
+        highlightCurrentSidebarNav();
+      });
+    </script>
+
+    <!-- Google Analytics tracking code -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-61082125-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  
+
+</body></html>
