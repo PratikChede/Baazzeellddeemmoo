@@ -1,0 +1,16 @@
+CHange symbol :
+
+find:flex h-6 w-6
+Replace:flex h-1 w-1
+
+
+Change name :
+find:ChatGPT</div>
+Replace:Demo</div>
+
+
+Replace only CHatgpt:
+ChatGPT <span class=
+to : Demo <span class=
+
+
